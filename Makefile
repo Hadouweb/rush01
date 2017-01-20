@@ -1,29 +1,23 @@
-CC = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
-NAME = ft_retro
+NAME = ft_gkrellm
 SRC_PATH = ./srcs
 HEADER_PATH = ./headers
 
-LIB = -lncurses
-INCLUDE = -I $(HEADER_PATH)
+LIB = -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML_2.4.1/Frameworks -lncurses
+INCLUDE = -I $(HEADER_PATH) -I ./SFML_2.4.1/include
 
-SRC =   $(SRC_PATH)/main.cpp\
-        $(SRC_PATH)/NcurseManager.cpp\
-        $(SRC_PATH)/GameEngine.cpp\
-        $(SRC_PATH)/GameManager.cpp\
-        $(SRC_PATH)/Bullet.cpp\
-        $(SRC_PATH)/Enemy.cpp\
-        $(SRC_PATH)/Player.cpp\
+SRC = $(SRC_PATH)/main.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	clang++ $(CC) -o $@ $(LIB) $^
+	clang++ -o $@ $(OBJ) -rpath ./lib/SFML_2.4.1/extlibs $(LIB) $(INCLUDE)
 
 %.o: %.cpp
-	clang++ $(CC) $(INCLUDE) -o $@ -c $<
+	clang++ $(FLAGS) -o $@ -c $< $(INCLUDE)
 
 clean:
 	rm -f $(OBJ)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 project(rush01)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES srcs/main.cpp)
 add_executable(rush01 ${SOURCE_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
