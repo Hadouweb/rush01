@@ -3,7 +3,6 @@
 
 class IMonitorDisplay {
 public:
-	virtual ~IMonitorDisplay(void);
 	virtual void update(void) = 0;
 };
 
