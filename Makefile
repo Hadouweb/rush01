@@ -7,7 +7,8 @@ HEADER_PATH = ./headers
 LIB = -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML_2.4.1/Frameworks -lncurses
 INCLUDE = -I $(HEADER_PATH) -I ./SFML_2.4.1/include
 
-SRC = $(SRC_PATH)/main.cpp
+SRC =   $(SRC_PATH)/main.cpp\
+        $(SRC_PATH)/SfmlDisplay.class.cpp\
 
 OBJ = $(SRC:%.cpp=%.o)
 
