@@ -1,16 +1,7 @@
 #include "SfmlDisplay.class.hpp"
 
-SfmlDisplay::SfmlDisplay(void) {
-	this->_window.create(sf::VideoMode(800, 600), "My monitor");
-	this->update();
-}
-
-SfmlDisplay::SfmlDisplay(SfmlDisplay const &src) {
-	*this = src;
-}
-
 SfmlDisplay::~SfmlDisplay(void) {
-
+	this->_window.close();
 }
 
 SfmlDisplay &SfmlDisplay::operator=(const SfmlDisplay &rhs) {
@@ -23,6 +14,10 @@ SfmlDisplay &SfmlDisplay::operator=(const SfmlDisplay &rhs) {
 void SfmlDisplay::update(void) {
 	while (this->_window.isOpen())
 	{
+		for (std::vector<IMonitorModule*>::iterator it = this->_modules.begin(); it != this->_modules.end(); ++it) {
+				this->displayModule((ModuleName *) (*it));
+		}
+
 		sf::Event event;
 		while (this->_window.pollEvent(event))
 		{
@@ -33,10 +28,12 @@ void SfmlDisplay::update(void) {
 	}
 }
 
-std::string SfmlDisplay::getHostName(void) const {
-	return this->_hostName;
+SfmlDisplay::SfmlDisplay(std::vector<IMonitorModule*> modules) : _modules(modules){
+	this->_window.create(sf::VideoMode(800, 600), "My monitor");
+	this->update();
 }
 
-std::string SfmlDisplay::getUserName(void) const {
-	return this->_userName;
+void SfmlDisplay::displayModule(ModuleName * m) {
+	if (m)
+		;
 }

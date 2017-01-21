@@ -3,7 +3,7 @@
 
 #include "IMonitorModule.class.hpp"
 
-class ModuleName : IMonitorModule {
+class ModuleName : public IMonitorModule {
 public:
     ModuleName(void);
     ModuleName(ModuleName const & src);
@@ -11,6 +11,9 @@ public:
     virtual ~ModuleName(void);
 
     ModuleName & operator=(ModuleName const & rhs);
+
+	int getHeight(void) const;
+	int getWidth(void) const;
 };
 
 #endif

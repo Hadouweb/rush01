@@ -1,11 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include "SfmlDisplay.class.hpp"
+#include "Monitor.class.hpp"
 
 int main(void)
 {
+	Monitor m;
+
 	//SfmlDisplay sf;
 
-	char hostname[256];
+	/*char hostname[256];
 	char username[256];
 	int result;
 	result = gethostname(hostname, 256);
@@ -27,7 +30,7 @@ int main(void)
 		perror("printf");
 		return EXIT_FAILURE;
 	}
-	return EXIT_SUCCESS;
+	return EXIT_SUCCESS;*/
 
 
 	return 0;

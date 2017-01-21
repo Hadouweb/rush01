@@ -9,22 +9,21 @@
 
 class SfmlDisplay : public IMonitorDisplay {
 public:
-    SfmlDisplay(void);
-    SfmlDisplay(SfmlDisplay const & src);
+	SfmlDisplay(std::vector<IMonitorModule*> modules);
 
     virtual ~SfmlDisplay(void);
 
 	void update(void);
 
-	std::string getHostName(void) const;
-	std::string getUserName(void) const;
-
 	SfmlDisplay & operator=(SfmlDisplay const & rhs);
 
+	void displayModule(ModuleName * m);
+
 private:
+	std::vector<IMonitorModule*> _modules;
 	sf::Window _window;
-	std::string _hostName;
-	std::string _userName;
+	SfmlDisplay(void);
+	SfmlDisplay(SfmlDisplay const & src);
 };
 
 #endif

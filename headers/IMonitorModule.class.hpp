@@ -3,8 +3,8 @@
 
 class IMonitorModule {
 public:
-	int getHeight(void) const = 0;
-	int getWidth(void) const = 0;
+	virtual int getHeight(void) const = 0;
+	virtual int getWidth(void) const = 0;
 };
 
 #endif

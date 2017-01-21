@@ -9,6 +9,8 @@ INCLUDE = -I $(HEADER_PATH) -I ./SFML_2.4.1/include
 
 SRC =   $(SRC_PATH)/main.cpp\
         $(SRC_PATH)/SfmlDisplay.class.cpp\
+        $(SRC_PATH)/ModuleName.class.cpp\
+        $(SRC_PATH)/Monitor.class.cpp\
 
 OBJ = $(SRC:%.cpp=%.o)
 
