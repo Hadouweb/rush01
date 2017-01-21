@@ -6,8 +6,13 @@ include_directories(headers)
 set(SOURCE_FILES
     srcs/main.cpp
     srcs/SfmlDisplay.class.cpp
+    srcs/Monitor.class.cpp
+    srcs/ModuleName.class.cpp
     headers/IMonitorDisplay.class.hpp
     headers/SfmlDisplay.class.hpp
+    headers/Monitor.class.hpp
+    headers/IMonitorModule.class.hpp
+    headers/ModuleName.class.hpp
     )
 add_executable(rush01 ${SOURCE_FILES})
 

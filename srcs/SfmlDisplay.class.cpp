@@ -32,3 +32,11 @@ void SfmlDisplay::update(void) {
 		}
 	}
 }
+
+std::string SfmlDisplay::getHostName(void) const {
+	return this->_hostName;
+}
+
+std::string SfmlDisplay::getUserName(void) const {
+	return this->_userName;
+}
