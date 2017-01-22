@@ -41,16 +41,16 @@ void ModuleRam::displaySfml(SfmlDisplay * sfml) {
 	int endLine = sfml->getModuleEndLine();
 
 	std::string outPutTotalMemory = "Total memory:      ";
-	outPutTotalMemory += std::to_string(this->getTotalMemory());
+	outPutTotalMemory += convertMemory(this->getTotalMemory());
 
 	std::string outPutUsedMemory = "Used memory:      ";
-	outPutUsedMemory += std::to_string(this->getUsedMemory());
+	outPutUsedMemory += convertMemory(this->getUsedMemory());
 
 	std::string outPutFreedMemory = "Freed memory:     ";
-	outPutFreedMemory += std::to_string(this->getFreedMemory());
+	outPutFreedMemory += convertMemory(this->getFreedMemory());
 
 	std::string outPutCachedMemory = "Cached memory: ";
-	outPutCachedMemory += std::to_string(this->getCachedFiles());
+	outPutCachedMemory += convertMemory(this->getCachedFiles());
 
 	sf::RectangleShape backgroundTitle(sf::Vector2f(120, 50));
 	backgroundTitle.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 40));
@@ -127,4 +127,27 @@ long long  ModuleRam::getTotalMemory() const {
 
 long long ModuleRam::getCachedFiles() const {
 	return (this->_cachedFiles);
+}
+
+std::string ModuleRam::convertMemory(long long bytes) {
+	std::string suffixes[7];
+	suffixes[0] = " B";
+	suffixes[1] = " KB";
+	suffixes[2] = " MB";
+	suffixes[3] = " GB";
+	suffixes[4] = " TB";
+	suffixes[5] = " PB";
+	suffixes[6] = " EB";
+	int s = 0;
+	double count = bytes;
+
+	while (count >= 1024) {
+		s++;
+		count /= 1024;
+	}
+
+	std::stringstream stream;
+	stream << std::fixed << std::setprecision(2) << count << suffixes[s];
+
+	return stream.str();
 }

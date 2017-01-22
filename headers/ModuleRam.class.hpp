@@ -9,6 +9,9 @@
 #include <mach/mach_types.h>
 #include <mach/mach_init.h>
 #include <mach/mach_host.h>
+#include <cmath>
+#include <iomanip>
+#include <sstream>
 
 class ModuleRam : public IMonitorModule {
 public:
@@ -27,6 +30,8 @@ public:
 	long long getUsedMemory(void) const;
 	long long getTotalMemory(void) const;
 	long long getCachedFiles(void) const;
+
+	std::string convertMemory(long long bytes);
 
 private:
 	long long _usedMemory;
