@@ -1,11 +1,11 @@
 #ifndef SFML_DISPLAY_HPP
 # define SFML_DISPLAY_HPP
 
-#include "IMonitorDisplay.class.hpp"
 #include <SFML/Window.hpp>
-#include <iostream>
-#include <unistd.h>
+#include <SFML/Graphics.hpp>
+#include "IMonitorDisplay.class.hpp"
 
+class IMonitorModule;
 
 class SfmlDisplay : public IMonitorDisplay {
 public:
@@ -17,11 +17,11 @@ public:
 
 	SfmlDisplay & operator=(SfmlDisplay const & rhs);
 
-	void displayModule(ModuleName * m);
+	sf::RenderWindow * getWindow(void) const;
 
 private:
 	std::vector<IMonitorModule*> _modules;
-	sf::Window _window;
+	sf::RenderWindow * _window;
 	SfmlDisplay(void);
 	SfmlDisplay(SfmlDisplay const & src);
 };

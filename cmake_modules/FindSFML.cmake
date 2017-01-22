@@ -74,6 +74,9 @@ set(FIND_SFML_PATHS
         /sw
         /opt/local
         /opt/csw
+        ../SFML_2.4.1
+        ../SFML_2.4.1/include
+        ../SFML_2.4.1/lib
         /opt)
 
 # find the SFML include directory

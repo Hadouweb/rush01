@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include "SfmlDisplay.class.hpp"
 #include "Monitor.class.hpp"
 
 int main(void)

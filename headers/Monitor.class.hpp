@@ -1,10 +1,12 @@
 #ifndef MONITOR_HPP
 # define MONITOR_HPP
 
-#include "IMonitorModule.class.hpp"
 #include "IMonitorDisplay.class.hpp"
+#include "IMonitorModule.class.hpp"
 #include <iostream>
 #include <vector>
+#include <unistd.h>
+
 
 class Monitor {
 public:
