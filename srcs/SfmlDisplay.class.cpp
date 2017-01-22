@@ -33,7 +33,7 @@ void SfmlDisplay::update(void) {
 }
 
 SfmlDisplay::SfmlDisplay(std::vector<IMonitorModule*> modules) : _modules(modules) {
-	this->_window.create(sf::VideoMode(650, 1200), "My monitor");
+	this->_window.create(sf::VideoMode(650, 935), "My monitor");
 	this->_window.setFramerateLimit(30);
 	if (!this->_font.loadFromFile("SFML/font/CaviarDreams.ttf")) {
 		exit(EXIT_FAILURE);

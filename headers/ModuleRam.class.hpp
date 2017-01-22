@@ -5,6 +5,10 @@
 #include "SfmlDisplay.class.hpp"
 #include "NcursesDisplay.class.hpp"
 #include <ncurses.h>
+#include <mach/vm_statistics.h>
+#include <mach/mach_types.h>
+#include <mach/mach_init.h>
+#include <mach/mach_host.h>
 
 class ModuleRam : public IMonitorModule {
 public:
@@ -17,10 +21,17 @@ public:
 
 	virtual void displaySfml(SfmlDisplay * sfml);
 	virtual void displayNcurse(NcursesDisplay * nc);
-	virtual std::string getModuleRam(void) const;
+	virtual std::string getModuleName(void) const;
+
+	long long getFreedMemory(void) const;
+	long long getUsedMemory(void) const;
+	long long getTotalMemory(void) const;
+	long long getCachedFiles(void) const;
 
 private:
-
+	long long _usedMemory;
+	long long _freedMemory;
+	long long _cachedFiles;
 };
 
 #endif
