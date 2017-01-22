@@ -19,10 +19,14 @@ public:
 	sf::RenderWindow & getWindow(void);
 	sf::Font & getFont(void);
 
+	virtual int getModuleEndLine() const;
+	virtual void setModuleEndLine(int y);
+
 private:
 	std::vector<IMonitorModule*> _modules;
 	sf::RenderWindow _window;
 	sf::Font _font;
+	int _y;
 	SfmlDisplay(void);
 	SfmlDisplay(SfmlDisplay const & src);
 };

@@ -1,8 +1,10 @@
 #include "Monitor.class.hpp"
 #include "SfmlDisplay.class.hpp"
 #include "ModuleName.class.hpp"
+#include "ModuleOsInfo.class.hpp"
 
 Monitor::Monitor(void) {
+	this->_modules.push_back(new ModuleOsInfo());
 	this->_modules.push_back(new ModuleName());
 	this->setDisplay(new SfmlDisplay(this->_modules));
 }

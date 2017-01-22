@@ -8,6 +8,8 @@
 class IMonitorDisplay {
 public:
 	virtual void update(void) = 0;
+	virtual int getModuleEndLine() const = 0;
+	virtual void setModuleEndLine(int y) = 0;
 };
 
 #endif

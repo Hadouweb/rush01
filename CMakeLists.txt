@@ -9,11 +9,13 @@ set(SOURCE_FILES
     srcs/SfmlDisplay.class.cpp
     srcs/Monitor.class.cpp
     srcs/ModuleName.class.cpp
+    srcs/ModuleOsInfo.class.cpp
     headers/IMonitorDisplay.class.hpp
     headers/SfmlDisplay.class.hpp
     headers/Monitor.class.hpp
     headers/IMonitorModule.class.hpp
     headers/ModuleName.class.hpp
+    headers/ModuleOsInfo.class.hpp
     )
 add_executable(rush01 ${SOURCE_FILES})
 

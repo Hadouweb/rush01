@@ -16,6 +16,7 @@ public:
 
 	virtual void displaySfml(SfmlDisplay * sfml) const;
 	virtual void displayNcurse(void) const;
+	virtual std::string getModuleName(void) const;
 };
 
 #endif

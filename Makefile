@@ -15,6 +15,7 @@ LIBS =	-framework sfml-graphics -framework sfml-window -framework sfml-system -F
 SRC =   $(SRC_PATH)/main.cpp\
         $(SRC_PATH)/SfmlDisplay.class.cpp\
         $(SRC_PATH)/ModuleName.class.cpp\
+        $(SRC_PATH)/ModuleOsInfo.class.cpp\
         $(SRC_PATH)/Monitor.class.cpp\
 
 OBJ = $(SRC:%.cpp=%.o)

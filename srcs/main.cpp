@@ -3,5 +3,6 @@
 int main()
 {
 	Monitor m;
+
 	return EXIT_SUCCESS;
 }
