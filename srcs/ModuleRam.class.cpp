@@ -19,12 +19,12 @@ ModuleRam &ModuleRam::operator=(ModuleRam const &rhs) {
 	return *this;
 }
 
-void ModuleRam::displaySfml(SfmlDisplay * sfml) const {
+void ModuleRam::displaySfml(SfmlDisplay * sfml) {
 	if (sfml)
 		;
 }
 
-void ModuleRam::displayNcurse(NcursesDisplay * nc) const {
+void ModuleRam::displayNcurse(NcursesDisplay * nc) {
 	if (nc)
 		;
 }

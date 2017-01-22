@@ -20,7 +20,7 @@ ModuleName &ModuleName::operator=(ModuleName const &rhs) {
 	return *this;
 }
 
-void ModuleName::displaySfml(SfmlDisplay * sfml) const {
+void ModuleName::displaySfml(SfmlDisplay * sfml) {
 	int endLine = sfml->getModuleEndLine();
 
 	std::string outPutHostName = "Hostname: ";
@@ -66,7 +66,7 @@ void ModuleName::displaySfml(SfmlDisplay * sfml) const {
 	sfml->setModuleEndLine(endLine);
 }
 
-void ModuleName::displayNcurse(NcursesDisplay * nc) const {
+void ModuleName::displayNcurse(NcursesDisplay * nc) {
 	int endLine = nc->getModuleEndLine();
 
 	endLine += 1;

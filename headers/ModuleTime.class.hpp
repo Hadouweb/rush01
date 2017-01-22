@@ -5,6 +5,7 @@
 #include "SfmlDisplay.class.hpp"
 #include "NcursesDisplay.class.hpp"
 #include <ncurses.h>
+#include <ctime>
 
 class ModuleTime : public IMonitorModule {
 public:
@@ -15,12 +16,9 @@ public:
 
     ModuleTime & operator=(ModuleTime const & rhs);
 
-	virtual void displaySfml(SfmlDisplay * sfml) const;
-	virtual void displayNcurse(NcursesDisplay * nc) const;
-	virtual std::string getModuleTime(void) const;
-
-private:
-
+	virtual void displaySfml(SfmlDisplay * sfml);
+	virtual void displayNcurse(NcursesDisplay * nc);
+	std::string getModuleName(void) const;
 };
 
 #endif

@@ -22,7 +22,7 @@ ModuleOsInfo &ModuleOsInfo::operator=(ModuleOsInfo const &rhs) {
 	return *this;
 }
 
-void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) const {
+void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) {
 	int endLine = sfml->getModuleEndLine();
 
 	std::string outPutRelease = "Release: ";
@@ -69,7 +69,7 @@ void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) const {
 	sfml->setModuleEndLine(endLine);
 }
 
-void ModuleOsInfo::displayNcurse(NcursesDisplay * nc) const {
+void ModuleOsInfo::displayNcurse(NcursesDisplay * nc) {
 	int endLine = nc->getModuleEndLine();
 
 	endLine += 5;

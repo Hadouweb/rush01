@@ -2,13 +2,17 @@
 #include "SfmlDisplay.class.hpp"
 #include "ModuleName.class.hpp"
 #include "ModuleOsInfo.class.hpp"
+#include "ModuleTime.class.hpp"
+#include "ModuleCpu.class.hpp"
 
 Monitor::Monitor(void) {
 	this->_modules.push_back(new ModuleName());
 	this->_modules.push_back(new ModuleOsInfo());
+	this->_modules.push_back(new ModuleTime());
+	this->_modules.push_back(new ModuleCpu());
 
 	this->setDisplay(new SfmlDisplay(this->_modules));
-	this->setDisplay(new NcursesDisplay(this->_modules));
+	//this->setDisplay(new NcursesDisplay(this->_modules));
 }
 
 Monitor::Monitor(Monitor const &src) {

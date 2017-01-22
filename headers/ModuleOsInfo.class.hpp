@@ -15,8 +15,8 @@ public:
 
     ModuleOsInfo & operator=(ModuleOsInfo const & rhs);
 
-	virtual void displaySfml(SfmlDisplay * sfml) const;
-	virtual void displayNcurse(NcursesDisplay * nc) const;
+	virtual void displaySfml(SfmlDisplay * sfml);
+	virtual void displayNcurse(NcursesDisplay * nc);
 	virtual std::string getModuleName(void) const;
 
 private:

@@ -9,8 +9,8 @@ class NcursesDisplay;
 class IMonitorModule {
 public:
 	virtual std::string getModuleName(void) const = 0;
-	virtual void displaySfml(SfmlDisplay * sfml) const = 0;
-	virtual void displayNcurse(NcursesDisplay * nc) const = 0;
+	virtual void displaySfml(SfmlDisplay * sfml) = 0;
+	virtual void displayNcurse(NcursesDisplay * nc) = 0;
 };
 
 #endif
