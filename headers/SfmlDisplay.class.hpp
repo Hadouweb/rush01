@@ -17,10 +17,12 @@ public:
 	SfmlDisplay & operator=(SfmlDisplay const & rhs);
 
 	sf::RenderWindow & getWindow(void);
+	sf::Font & getFont(void);
 
 private:
 	std::vector<IMonitorModule*> _modules;
 	sf::RenderWindow _window;
+	sf::Font _font;
 	SfmlDisplay(void);
 	SfmlDisplay(SfmlDisplay const & src);
 };

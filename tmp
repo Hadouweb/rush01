@@ -1,34 +1,34 @@
-FLAGS = -Wall -Wextra -Werror
 
-NAME = ft_gkrellm
-SRC_PATH = ./srcs
-HEADER_PATH = ./headers
+#include <SFML/Graphics.hpp>
+int main()
+{
+	// Create the main window
+	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+	// Load a sprite to display
+	// Create a graphical text to display
+	sf::Font font;
+	if (!font.loadFromFile("SFML/font/CaviarDreams.ttf"))
+		return EXIT_FAILURE;
+	sf::Text text("Hello SFML", font, 50);
+	// Load a music to play
 
-
-LIB = -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML_2.4.1/Frameworks -lncurses
-INCLUDE = -I $(HEADER_PATH) -I ./SFML_2.4.1/include
-
-SRC =   $(SRC_PATH)/main.cpp\
-        $(SRC_PATH)/SfmlDisplay.class.cpp\
-        $(SRC_PATH)/ModuleName.class.cpp\
-        $(SRC_PATH)/Monitor.class.cpp\
-
-OBJ = $(SRC:%.cpp=%.o)
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	clang++ -o $@ $(OBJ) -rpath ./lib/SFML_2.4.1/extlibs $(LIB) $(INCLUDE)
-
-%.o: %.cpp
-	clang++ $(FLAGS) -o $@ -c $< $(INCLUDE)
-
-clean:
-	rm -f $(OBJ)
-
-fclean: clean
-	rm -f $(NAME)
-
-re : fclean all
-
-.PHONY: all clean fclean re
+	// Start the game loop
+	while (window.isOpen())
+	{
+		// Process events
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			// Close window: exit
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		// Clear screen
+		window.clear();
+		// Draw the string
+		window.draw(text);
+		// Update the window
+		window.display();
+	}
+	return EXIT_SUCCESS;
+}

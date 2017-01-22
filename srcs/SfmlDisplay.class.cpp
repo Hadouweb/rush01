@@ -14,10 +14,6 @@ SfmlDisplay &SfmlDisplay::operator=(const SfmlDisplay &rhs) {
 void SfmlDisplay::update(void) {
 	while (this->_window.isOpen())
 	{
-		for (std::vector<IMonitorModule*>::iterator it = this->_modules.begin(); it != this->_modules.end(); ++it) {
-			(*it)->displaySfml(this);
-		}
-
 		sf::Event event;
 		while (this->_window.pollEvent(event))
 		{
@@ -25,13 +21,21 @@ void SfmlDisplay::update(void) {
 				this->_window.close();
 			}
 		}
+
+		this->_window.clear(sf::Color::Black);
+		for (std::vector<IMonitorModule*>::iterator it = this->_modules.begin(); it != this->_modules.end(); ++it) {
+			(*it)->displaySfml(this);
+		}
+		this->_window.display();
 	}
 }
 
 SfmlDisplay::SfmlDisplay(std::vector<IMonitorModule*> modules) : _modules(modules){
-	std::cout << "lol" << std::endl;
 	this->_window.create(sf::VideoMode(800, 600), "My monitor");
-	std::cout << "lol" << std::endl;
+	this->_window.setFramerateLimit(30);
+	if (!this->_font.loadFromFile("SFML/font/CaviarDreams.ttf")) {
+		exit(EXIT_FAILURE);
+	}
 	this->update();
 
 }
@@ -39,4 +43,8 @@ SfmlDisplay::SfmlDisplay(std::vector<IMonitorModule*> modules) : _modules(module
 
 sf::RenderWindow & SfmlDisplay::getWindow(void) {
 	return this->_window;
+}
+
+sf::Font &SfmlDisplay::getFont(void) {
+	return this->_font;
 }

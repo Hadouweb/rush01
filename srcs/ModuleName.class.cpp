@@ -19,34 +19,30 @@ ModuleName &ModuleName::operator=(ModuleName const &rhs) {
 	return *this;
 }
 
-int ModuleName::getHeight(void) const {
-	return 0;
-}
-
-int ModuleName::getWidth(void) const {
-	return 0;
-}
-
 void ModuleName::displaySfml(SfmlDisplay * sfml) const {
+	char hostname[256];
+	char username[256];
 
-	sf::Text text;
+	gethostname(hostname, 256);
+	getlogin_r(username, 256);
 
-// choix de la chaîne de caractères à afficher
-	text.setString("Hello world");
+	std::string outPutHostName = "Hostname: ";
+	std::string outPutUserName = "Username: ";
+	outPutHostName += hostname;
+	outPutUserName += username;
 
-// choix de la taille des caractères
-	text.setCharacterSize(24); // exprimée en pixels, pas en points !
+	sf::Text textHostName(outPutHostName, sfml->getFont(), 50);
+	textHostName.setPosition(50, 10);
+	textHostName.setCharacterSize(24);
+	textHostName.setFillColor(sf::Color::White);
 
-// choix de la couleur du texte
-	text.setFillColor(sf::Color::Red);
+	sf::Text textUserName(outPutUserName, sfml->getFont(), 50);
+	textUserName.setPosition(50, 40);
+	textUserName.setCharacterSize(24);
+	textUserName.setFillColor(sf::Color::White);
 
-// choix du style du texte
-	//text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-// puis, dans la boucle de dessin, entre window.clear() et window.display()
-
-	sfml->getWindow().clear();
-	sfml->getWindow().draw(text);
-	sfml->getWindow().display();
+	sfml->getWindow().draw(textHostName);
+	sfml->getWindow().draw(textUserName);
 }
 
 void ModuleName::displayNcurse(void) const {

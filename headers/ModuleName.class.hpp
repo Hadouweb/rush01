@@ -3,6 +3,7 @@
 
 #include "IMonitorModule.class.hpp"
 #include "SfmlDisplay.class.hpp"
+#include <unistd.h>
 
 class ModuleName : public IMonitorModule {
 public:
@@ -12,9 +13,6 @@ public:
     virtual ~ModuleName(void);
 
     ModuleName & operator=(ModuleName const & rhs);
-
-	int getHeight(void) const;
-	int getWidth(void) const;
 
 	virtual void displaySfml(SfmlDisplay * sfml) const;
 	virtual void displayNcurse(void) const;
