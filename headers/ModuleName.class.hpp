@@ -2,7 +2,6 @@
 # define MODULE_NAME_HPP
 
 #include "IMonitorModule.class.hpp"
-#include <SFML/Graphics.hpp>
 #include "SfmlDisplay.class.hpp"
 
 class ModuleName : public IMonitorModule {

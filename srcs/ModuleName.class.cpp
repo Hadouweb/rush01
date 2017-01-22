@@ -28,8 +28,8 @@ int ModuleName::getWidth(void) const {
 }
 
 void ModuleName::displaySfml(SfmlDisplay * sfml) const {
-	sf::Text text;
 
+	sf::Text text;
 
 // choix de la chaîne de caractères à afficher
 	text.setString("Hello world");
@@ -41,11 +41,12 @@ void ModuleName::displaySfml(SfmlDisplay * sfml) const {
 	text.setFillColor(sf::Color::Red);
 
 // choix du style du texte
-	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	//text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 // puis, dans la boucle de dessin, entre window.clear() et window.display()
 
-	sf::RenderWindow *w = sfml->getWindow();
-	w->draw(text);
+	sfml->getWindow().clear();
+	sfml->getWindow().draw(text);
+	sfml->getWindow().display();
 }
 
 void ModuleName::displayNcurse(void) const {

@@ -74,9 +74,11 @@ set(FIND_SFML_PATHS
         /sw
         /opt/local
         /opt/csw
-        ../SFML_2.4.1
-        ../SFML_2.4.1/include
-        ../SFML_2.4.1/lib
+        ../SFML
+        ../SFML/include
+        ../SFML/lib
+        /usr/local/Cellar/
+        /usr/local/Cellar/sfml/2.4.1
         /opt)
 
 # find the SFML include directory
