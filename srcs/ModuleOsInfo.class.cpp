@@ -1,7 +1,10 @@
 #include "ModuleOsInfo.class.hpp"
 
 ModuleOsInfo::ModuleOsInfo(void) {
+	size_t size = 256;
 
+	sysctlbyname("kern.osrelease", this->_osRelease, &size, NULL, 0);
+	sysctlbyname("kern.ostype", this->_osType, &size, NULL, 0);
 }
 
 ModuleOsInfo::ModuleOsInfo(ModuleOsInfo const &src) {
@@ -21,17 +24,11 @@ ModuleOsInfo &ModuleOsInfo::operator=(ModuleOsInfo const &rhs) {
 
 void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) const {
 	int endLine = sfml->getModuleEndLine();
-	char	kernostype[256];
-	char	kernosrelease[256];
-	size_t	size = 256;
-
-	sysctlbyname("kern.ostype", &kernostype, &size, NULL, 0);
-	sysctlbyname("kern.osrelease", &kernosrelease, &size, NULL, 0);
 
 	std::string outPutRelease = "Release: ";
 	std::string outPutType = "Type: ";
-	outPutRelease += kernosrelease;
-	outPutType += kernostype;
+	outPutRelease += this->_osRelease;
+	outPutType += this->_osType;
 
 	sf::RectangleShape backgroundTitle(sf::Vector2f(10, 5));
 	backgroundTitle.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 40));
@@ -72,8 +69,13 @@ void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) const {
 	sfml->setModuleEndLine(endLine);
 }
 
-void ModuleOsInfo::displayNcurse(void) const {
+void ModuleOsInfo::displayNcurse(NcursesDisplay * nc) const {
+	int endLine = nc->getModuleEndLine();
 
+	endLine += 5;
+	mvprintw(endLine, 1, this->_osRelease);
+	mvprintw(endLine, 10, this->_osType);
+	nc->setModuleEndLine(endLine);
 }
 
 std::string ModuleOsInfo::getModuleName(void) const {

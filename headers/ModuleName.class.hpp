@@ -3,7 +3,9 @@
 
 #include "IMonitorModule.class.hpp"
 #include "SfmlDisplay.class.hpp"
+#include "NcursesDisplay.class.hpp"
 #include <unistd.h>
+#include <ncurses.h>
 
 class ModuleName : public IMonitorModule {
 public:
@@ -15,8 +17,12 @@ public:
     ModuleName & operator=(ModuleName const & rhs);
 
 	virtual void displaySfml(SfmlDisplay * sfml) const;
-	virtual void displayNcurse(void) const;
+	virtual void displayNcurse(NcursesDisplay * nc) const;
 	virtual std::string getModuleName(void) const;
+
+private:
+	char _hostName[256];
+	char _userName[256];
 };
 
 #endif

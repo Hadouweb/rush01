@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rush01.dir/srcs/SfmlDisplay.class.cpp.o"
   "CMakeFiles/rush01.dir/srcs/Monitor.class.cpp.o"
   "CMakeFiles/rush01.dir/srcs/ModuleName.class.cpp.o"
+  "CMakeFiles/rush01.dir/srcs/ModuleOsInfo.class.cpp.o"
+  "CMakeFiles/rush01.dir/srcs/NcursesDisplay.class.cpp.o"
   "rush01.pdb"
   "rush01"
 )

@@ -10,12 +10,20 @@ set(SOURCE_FILES
     srcs/Monitor.class.cpp
     srcs/ModuleName.class.cpp
     srcs/ModuleOsInfo.class.cpp
+    srcs/NcursesDisplay.class.cpp
+    srcs/ModuleCpu.class.cpp
+    srcs/ModuleRam.class.cpp
+    srcs/ModuleTime.class.cpp
     headers/IMonitorDisplay.class.hpp
     headers/SfmlDisplay.class.hpp
     headers/Monitor.class.hpp
     headers/IMonitorModule.class.hpp
     headers/ModuleName.class.hpp
     headers/ModuleOsInfo.class.hpp
+    headers/NcursesDisplay.class.hpp
+    headers/ModuleCpu.class.hpp
+    headers/ModuleTime.class.hpp
+    headers/ModuleRam.class.hpp
     )
 add_executable(rush01 ${SOURCE_FILES})
 

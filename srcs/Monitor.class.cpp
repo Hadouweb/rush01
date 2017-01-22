@@ -4,9 +4,11 @@
 #include "ModuleOsInfo.class.hpp"
 
 Monitor::Monitor(void) {
-	this->_modules.push_back(new ModuleOsInfo());
 	this->_modules.push_back(new ModuleName());
+	this->_modules.push_back(new ModuleOsInfo());
+
 	this->setDisplay(new SfmlDisplay(this->_modules));
+	this->setDisplay(new NcursesDisplay(this->_modules));
 }
 
 Monitor::Monitor(Monitor const &src) {

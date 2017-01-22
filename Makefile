@@ -16,7 +16,11 @@ SRC =   $(SRC_PATH)/main.cpp\
         $(SRC_PATH)/SfmlDisplay.class.cpp\
         $(SRC_PATH)/ModuleName.class.cpp\
         $(SRC_PATH)/ModuleOsInfo.class.cpp\
+        $(SRC_PATH)/NcursesDisplay.class.cpp\
         $(SRC_PATH)/Monitor.class.cpp\
+        $(SRC_PATH)/ModuleCpu.class.cpp\
+        $(SRC_PATH)/ModuleRam.class.cpp\
+        $(SRC_PATH)/ModuleTime.class.cpp\
 
 OBJ = $(SRC:%.cpp=%.o)
 

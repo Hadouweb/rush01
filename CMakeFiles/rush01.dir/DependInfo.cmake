@@ -4,10 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/hadouweb/projects/rush01/srcs/ModuleName.class.cpp" "/Users/hadouweb/projects/rush01/CMakeFiles/rush01.dir/srcs/ModuleName.class.cpp.o"
-  "/Users/hadouweb/projects/rush01/srcs/Monitor.class.cpp" "/Users/hadouweb/projects/rush01/CMakeFiles/rush01.dir/srcs/Monitor.class.cpp.o"
-  "/Users/hadouweb/projects/rush01/srcs/SfmlDisplay.class.cpp" "/Users/hadouweb/projects/rush01/CMakeFiles/rush01.dir/srcs/SfmlDisplay.class.cpp.o"
-  "/Users/hadouweb/projects/rush01/srcs/main.cpp" "/Users/hadouweb/projects/rush01/CMakeFiles/rush01.dir/srcs/main.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/ModuleName.class.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/ModuleName.class.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/ModuleOsInfo.class.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/ModuleOsInfo.class.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/Monitor.class.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/Monitor.class.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/NcursesDisplay.class.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/NcursesDisplay.class.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/SfmlDisplay.class.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/SfmlDisplay.class.cpp.o"
+  "/Users/nle-bret/projects/rush01/srcs/main.cpp" "/Users/nle-bret/projects/rush01/CMakeFiles/rush01.dir/srcs/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -15,7 +17,7 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "headers"
   "SF"
-  "/usr/local/include"
+  "/Users/nle-bret/Library/Frameworks/SFML.framework"
   )
 
 # Targets to which this target links.

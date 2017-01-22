@@ -1,7 +1,8 @@
 #include "ModuleName.class.hpp"
 
 ModuleName::ModuleName(void) {
-
+	gethostname(this->_hostName, 256);
+	getlogin_r(this->_userName, 256);
 }
 
 ModuleName::ModuleName(ModuleName const &src) {
@@ -21,16 +22,11 @@ ModuleName &ModuleName::operator=(ModuleName const &rhs) {
 
 void ModuleName::displaySfml(SfmlDisplay * sfml) const {
 	int endLine = sfml->getModuleEndLine();
-	char hostname[256];
-	char username[256];
-
-	gethostname(hostname, 256);
-	getlogin_r(username, 256);
 
 	std::string outPutHostName = "Hostname: ";
 	std::string outPutUserName = "Username: ";
-	outPutHostName += hostname;
-	outPutUserName += username;
+	outPutHostName += this->_hostName;
+	outPutUserName += this->_userName;
 
 	sf::RectangleShape backgroundTitle(sf::Vector2f(120, 50));
 	backgroundTitle.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 40));
@@ -70,8 +66,14 @@ void ModuleName::displaySfml(SfmlDisplay * sfml) const {
 	sfml->setModuleEndLine(endLine);
 }
 
-void ModuleName::displayNcurse(void) const {
+void ModuleName::displayNcurse(NcursesDisplay * nc) const {
+	int endLine = nc->getModuleEndLine();
 
+	endLine += 1;
+	mvprintw(endLine, 1, this->_userName);
+	endLine += 1;
+	mvprintw(endLine, 1, this->_hostName);
+	nc->setModuleEndLine(endLine);
 }
 
 std::string ModuleName::getModuleName(void) const {
