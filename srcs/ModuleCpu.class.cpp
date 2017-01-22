@@ -34,7 +34,7 @@ void ModuleCpu::displaySfml(SfmlDisplay * sfml) {
 	sf::RectangleShape backgroundTitle(sf::Vector2f(120, 50));
 	backgroundTitle.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 40));
 	backgroundTitle.setPosition(0, endLine);
-	backgroundTitle.setFillColor(sf::Color(155, 89, 182));
+	backgroundTitle.setFillColor(sf::Color(52, 73, 94));
 
 	sf::Text textModuleName(this->getModuleName(), sfml->getFont(), 50);
 	endLine += 5;
@@ -44,9 +44,9 @@ void ModuleCpu::displaySfml(SfmlDisplay * sfml) {
 
 	endLine += 35;
 	sf::RectangleShape background(sf::Vector2f(120, 50));
-	background.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 110));
+	background.setSize(sf::Vector2f(sfml->getWindow().getSize().x, 260));
 	background.setPosition(0, endLine);
-	background.setFillColor(sf::Color(142, 68, 173));
+	background.setFillColor(sf::Color(44, 62, 80));
 
 	sf::Text textModel(outPutModel, sfml->getFont(), 50);
 	endLine += 15;
@@ -76,7 +76,8 @@ void ModuleCpu::displaySfml(SfmlDisplay * sfml) {
 	sfml->setModuleEndLine(endLine);
 	this->displaySfmlCpuUsage(sfml);
 
-	endLine += 55;
+	endLine = sfml->getModuleEndLine();
+	endLine += 35;
 	sfml->setModuleEndLine(endLine);
 }
 
@@ -190,6 +191,8 @@ void ModuleCpu::displaySfmlCpuUsage(SfmlDisplay * sfml) {
 
 		sfml->getWindow().draw(textCpuUsage);
 	}
+	sfml->setModuleEndLine(endLine);
+
 	if (this->_frameRate >= 20)
 		this->_frameRate = 0;
 	this->_frameRate++;
