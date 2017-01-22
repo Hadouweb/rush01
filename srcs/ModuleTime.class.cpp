@@ -74,8 +74,30 @@ void ModuleTime::displaySfml(SfmlDisplay * sfml) {
 }
 
 void ModuleTime::displayNcurse(NcursesDisplay * nc) {
-	if (nc)
-		;
+	int endLine = nc->getModuleEndLine();
+
+	endLine += 2;
+	mvprintw(endLine++, 1, this->getModuleName().c_str());
+	endLine += 1;
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+
+	std::string outPutDate = "Date: ";
+	outPutDate += std::to_string(ltm->tm_mday) + " ";
+	outPutDate += std::to_string(ltm->tm_mon + 1) + " ";
+	outPutDate += std::to_string(ltm->tm_year + 1900);
+
+	std::string outPutTime = "Time: ";
+	outPutTime += std::to_string(ltm->tm_hour) + ":";
+	outPutTime += std::to_string(ltm->tm_min) + ":";
+	outPutTime += std::to_string(ltm->tm_sec);
+
+	mvprintw(endLine++, 1, outPutDate.c_str());
+	mvprintw(endLine++, 1, outPutTime.c_str());
+
+	mvprintw(endLine, 1,"___________________________");
+	nc->setModuleEndLine(endLine);
+
 }
 
 std::string ModuleTime::getModuleName(void) const {

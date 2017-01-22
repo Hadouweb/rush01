@@ -29,6 +29,7 @@ public:
 	int getNumberCore(void) const;
 	float getCpuUsage(int idCore);
 	void displaySfmlCpuUsage(SfmlDisplay * sfml);
+	void displayNcursesCpuUsage(NcursesDisplay * nc);
 
 private:
 	struct Ticks {

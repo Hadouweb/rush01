@@ -17,11 +17,15 @@ NcursesDisplay::~NcursesDisplay(void) {
 void NcursesDisplay::update(void) {
 	while (42) {
 
+		std::clock_t start = std::clock();
+
 		this->setModuleEndLine(0);
 		for (std::vector<IMonitorModule*>::iterator it = this->_modules.begin(); it != this->_modules.end(); ++it) {
 			(*it)->displayNcurse(this);
 		}
 		refresh();
+		int end = int(std::clock() - start);
+		usleep(20000 - end);
 	}
 }
 

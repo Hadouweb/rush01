@@ -13,8 +13,8 @@ Monitor::Monitor(void) {
 	this->_modules.push_back(new ModuleCpu());
 	this->_modules.push_back(new ModuleRam());
 
-	this->setDisplay(new SfmlDisplay(this->_modules));
-	//this->setDisplay(new NcursesDisplay(this->_modules));
+	//this->setDisplay(new SfmlDisplay(this->_modules));
+	this->setDisplay(new NcursesDisplay(this->_modules));
 }
 
 Monitor::Monitor(Monitor const &src) {

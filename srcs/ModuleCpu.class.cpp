@@ -82,8 +82,26 @@ void ModuleCpu::displaySfml(SfmlDisplay * sfml) {
 }
 
 void ModuleCpu::displayNcurse(NcursesDisplay * nc) {
-	if (nc)
-		;
+	int endLine = nc->getModuleEndLine();
+
+	endLine += 2;
+	mvprintw(endLine++, 1, this->getModuleName().c_str());
+	endLine += 1;
+	std::string str = (std::string("Model : ") +(this->getModel()));
+	std::string str1 = std::string("Clock speed : ") + (this->getClockSpeed());
+	std::string str2 = std::string("Number of cores : ") + std::to_string(this->getNumberCore());
+	mvprintw(endLine, 1 , str.c_str());
+	endLine += 1;
+	mvprintw(endLine, 1 , str1.c_str());
+	endLine += 1;
+	mvprintw(endLine, 1 , str2.c_str());
+	endLine += 1;
+
+	nc->setModuleEndLine(endLine);
+	this->displayNcursesCpuUsage(nc);
+	endLine = nc->getModuleEndLine();
+	mvprintw(++endLine, 1,"___________________________");
+	nc->setModuleEndLine(endLine);
 }
 
 std::string ModuleCpu::getModuleName(void) const {
@@ -169,8 +187,7 @@ void ModuleCpu::displaySfmlCpuUsage(SfmlDisplay * sfml) {
 		std::string outPutCpuUsage = "Core " + std::to_string(i + 1) + ": ";
 
 		std::stringstream stream;
-		stream << std::fixed << std::setprecision(1)
-			   << this->getCpuUsage(i);
+		stream << std::fixed << std::setprecision(1) << this->getCpuUsage(i);
 
 		std::string ret;
 
@@ -194,6 +211,38 @@ void ModuleCpu::displaySfmlCpuUsage(SfmlDisplay * sfml) {
 	sfml->setModuleEndLine(endLine);
 
 	if (this->_frameRate >= 20)
+		this->_frameRate = 0;
+	this->_frameRate++;
+}
+
+void ModuleCpu::displayNcursesCpuUsage(NcursesDisplay * nc) {
+	int endLine = nc->getModuleEndLine();
+	int nbCore = this->getNumberCore();
+
+	for (int i = 0; i < nbCore; i++) {
+		std::string outPutCpuUsage = "Core " + std::to_string(i + 1) + ": ";
+
+		std::stringstream stream;
+		stream << std::fixed << std::setprecision(1) << this->getCpuUsage(i);
+
+		std::string ret;
+
+		if (this->_frameRate >= 10) {
+			ret = stream.str();
+			this->_percent[i] = ret;
+		} else {
+			ret = this->_percent[i];
+		}
+
+		outPutCpuUsage += ret;
+
+		mvprintw(endLine, 1 , "                                ");
+		mvprintw(endLine, 1 , outPutCpuUsage.c_str());
+		endLine++;
+
+	}
+	nc->setModuleEndLine(endLine - 1);
+	if (this->_frameRate >= 10)
 		this->_frameRate = 0;
 	this->_frameRate++;
 }

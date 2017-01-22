@@ -3,6 +3,7 @@
 
 #include <ncurses.h>
 #include "IMonitorDisplay.class.hpp"
+#include <unistd.h>
 
 class IMonitorModule;
 

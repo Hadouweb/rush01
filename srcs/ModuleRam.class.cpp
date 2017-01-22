@@ -105,8 +105,49 @@ void ModuleRam::displaySfml(SfmlDisplay * sfml) {
 }
 
 void ModuleRam::displayNcurse(NcursesDisplay * nc) {
-	if (nc)
-		;
+
+	vm_size_t page_size;
+	mach_port_t mach_port;
+	mach_msg_type_number_t count;
+	vm_statistics64_data_t vm_stats;
+
+	mach_port = mach_host_self();
+	count = sizeof(vm_stats) / sizeof(natural_t);
+	if (KERN_SUCCESS == host_page_size(mach_port, &page_size) &&
+		KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO,
+										  (host_info64_t)&vm_stats, &count))
+	{
+		this->_freedMemory = (int64_t)vm_stats.free_count * (int64_t)page_size;
+		this->_usedMemory = ((int64_t)vm_stats.active_count + (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
+		this->_cachedFiles = (int64_t)vm_stats.inactive_count * (int64_t)page_size ;
+
+	}
+
+	int endLine = nc->getModuleEndLine();
+
+	endLine += 2;
+	mvprintw(endLine, 1, this->getModuleName().c_str());
+	endLine += 1;
+
+	std::string outPutTotalMemory = "Total memory:  ";
+	outPutTotalMemory += convertMemory(this->getTotalMemory());
+
+	std::string outPutUsedMemory = "Used memory:   ";
+	outPutUsedMemory += convertMemory(this->getUsedMemory());
+
+	std::string outPutFreedMemory = "Freed memory:  ";
+	outPutFreedMemory += convertMemory(this->getFreedMemory());
+
+	std::string outPutCachedMemory = "Cached memory: ";
+	outPutCachedMemory += convertMemory(this->getCachedFiles());
+
+	mvprintw(++endLine, 1, outPutTotalMemory.c_str());
+	mvprintw(++endLine, 1, outPutUsedMemory.c_str());
+	mvprintw(++endLine, 1, outPutFreedMemory.c_str());
+	mvprintw(++endLine, 1, outPutCachedMemory.c_str());
+	mvprintw(++endLine, 1,"___________________________");
+
+	nc->setModuleEndLine(endLine);
 }
 
 std::string ModuleRam::getModuleName(void) const {

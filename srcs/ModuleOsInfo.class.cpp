@@ -72,9 +72,13 @@ void ModuleOsInfo::displaySfml(SfmlDisplay * sfml) {
 void ModuleOsInfo::displayNcurse(NcursesDisplay * nc) {
 	int endLine = nc->getModuleEndLine();
 
-	endLine += 5;
+	endLine += 2;
+	mvprintw(endLine++, 1, this->getModuleName().c_str());
+	endLine++;
 	mvprintw(endLine, 1, this->_osRelease);
 	mvprintw(endLine, 10, this->_osType);
+	endLine++;
+	mvprintw(endLine, 1,"___________________________");
 	nc->setModuleEndLine(endLine);
 }
 

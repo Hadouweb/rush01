@@ -68,11 +68,13 @@ void ModuleName::displaySfml(SfmlDisplay * sfml) {
 
 void ModuleName::displayNcurse(NcursesDisplay * nc) {
 	int endLine = nc->getModuleEndLine();
-
-	endLine += 1;
+	mvprintw(++endLine, 1, this->getModuleName().c_str());
+	endLine += 2;
 	mvprintw(endLine, 1, this->_userName);
 	endLine += 1;
 	mvprintw(endLine, 1, this->_hostName);
+	endLine++;
+	mvprintw(endLine, 1,"___________________________");
 	nc->setModuleEndLine(endLine);
 }
 
